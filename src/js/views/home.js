@@ -11,11 +11,10 @@ export const Home = () => {
   console.log(store.personajesSwapi);
   console.log(store.planetasSwapi);
 
-
   return (
     <div className="text-start mt-5 container">
       <h2 className="text-danger">Characters</h2>
-      
+
       <div className="carrousel">
         {store.personajesSwapi.map((personaje) => {
           return (
@@ -26,15 +25,14 @@ export const Home = () => {
                 <p className="card-text">Gender: {personaje.properties.gender}</p>
                 <p className="card-text">Hair Color: {personaje.properties.hair_color}</p>
                 <p className="card-text">Eye Color: {personaje.properties.eye_color}</p>
-                <div className="d-flex justify-content-between aling-item-start">
+                <div className="d-flex justify-content-between">
                   <button className="btn btn-outline-primary"
                     onClick={() => navigate(`/personaje/${personaje.uid}`)}>Learn more</button>
-                  <button className="btn btn-outline-warning" 
-                    onClick={() => actions.addFavorite(personaje)}><i className="fab fa-gratipay"></i></button>  
+                  <button className="btn btn-outline-warning"
+                    onClick={() => actions.addFavorite(personaje)}><i className="fab fa-gratipay"></i></button>
                 </div>
               </div>
             </div>
-
           );
         })}
       </div>
@@ -42,24 +40,23 @@ export const Home = () => {
       <div className="carrousel">
         {store.planetasSwapi.map((planeta) => {
           return (
-            <div className="card" key={planeta.uid}>
+            <div className="planets border border-1" key={planeta.uid}>
               <img src={`https://starwars-visualguide.com/assets/img/planets/${planeta.uid}.jpg`} className="card-img-top" alt="..." />
               <div className="card-body">
                 <h5 className="card-title">{planeta.properties.name}</h5>
                 <p className="card-text">Population: {planeta.properties.population}</p>
                 <p className="card-text">Terrain: {planeta.properties.terrain}</p>
-                <div className="footercard">
+              </div>
+              <div className="footercard p-3">
                 <button className="btn btn-outline-primary"
                   onClick={() => navigate(`/planeta/${planeta.uid}`)}>Learn more</button>
-                <button className="btn btn-outline-warning" 
-                  onClick={() => actions.addFavorite(planeta)}><i className="fab fa-gratipay"></i></button> 
-                </div>
+                <button className="btn btn-outline-warning"
+                  onClick={() => actions.addFavorite(planeta)}><i className="fab fa-gratipay"></i></button>
               </div>
             </div>
           )
         })}
       </div>
-
     </div>
   );
 };

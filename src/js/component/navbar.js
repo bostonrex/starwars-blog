@@ -17,18 +17,15 @@ export const Navbar = () => {
 						Favorites {store.favorites.length}
 					</button>
 					<ul className="dropdown-menu">
-						
-              <div>{store.favorites.map((favorito, index) => {
-							return (<li className="d-flex justify-content-between">
-								<p key={`${favorito.uid}-${index}`}>{favorito.properties.name}</p>
-                <button className="btn btn-outline-dark border border-0" 
-                onClick={() => actions.addFavorite(favorito)}><i className="fas fa-trash"></i></button>
-						
-                </li>)
-						})}
-            </div>
-						
 
+						<div>{store.favorites.map((favorito, index) => {
+							return (<li className="d-flex justify-content-between p-2">
+								<p key={`${favorito.uid}-${index}`}>{favorito.properties.name}</p>
+								<button className="btn btn-outline-dark border border-0"
+									onClick={() => actions.addFavorite(favorito)}><i className="fas fa-trash"></i></button>
+							</li>)
+						})}
+						</div>
 					</ul>
 				</div>
 			</div>
